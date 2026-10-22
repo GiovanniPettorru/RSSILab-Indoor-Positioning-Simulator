@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use the RSSILab Indoor Positioning Simulator in your research, please cite it as below."
+title: "RSSILab Indoor Positioning Simulator: GPS-free RSSI-based indoor positioning and tracking"
+abstract: >-
+  RSSILab Indoor Positioning Simulator (RSSILab) is a simulator for research on
+  GPS-free indoor positioning and tracking based on the received signal strength. It
+  builds indoor scenarios with anchors, walls and furniture, simulates the RSS of
+  several radio technologies (path loss, multi-wall losses, correlated shadowing,
+  fading, receiver effects), generates RSS datasets and benchmarks distance-based
+  methods (trilateration, multilateration, maximum likelihood) and fingerprinting
+  models trained on a simulated survey (k-NN, decision tree, random forest, neural
+  network), with Monte Carlo trials and error statistics, from a GUI or from Python.
+type: software
+authors:
+  - family-names: Pettorru
+    given-names: Giovanni
+    affiliation: "University of Cagliari, Italy"
+version: 1.0.0
+date-released: 2026-10-22
+license: MIT
+repository-code: "https://github.com/GiovanniPettorru/RSSILab-Indoor-Positioning-Simulator"
+keywords:
+  - indoor positioning
+  - localization
+  - RSSI
+  - fingerprinting
+  - multilateration
+  - tracking
+  - simulator

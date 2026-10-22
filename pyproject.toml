@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rssilab"
+dynamic = ["version"]
+description = "RSSILab Indoor Positioning Simulator: GPS-free, RSSI-based indoor positioning and tracking research - scenarios, RSS datasets, distance-based and fingerprinting methods, benchmarking."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Giovanni Pettorru" }]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.22", "matplotlib>=3.8", "scikit-learn>=1.1"]
+keywords = ["indoor positioning", "localization", "RSSI", "RSS", "fingerprinting", "multilateration",
+            "machine learning", "tracking", "simulator", "wireless", "IoT"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: System :: Networking",
+]
+
+[project.scripts]
+rssilab = "rssilab.gui:main"
+
+[project.urls]
+Homepage = "https://github.com/GiovanniPettorru/RSSILab-Indoor-Positioning-Simulator"
+Documentation = "https://github.com/GiovanniPettorru/RSSILab-Indoor-Positioning-Simulator/tree/HEAD/docs"
+Issues = "https://github.com/GiovanniPettorru/RSSILab-Indoor-Positioning-Simulator/issues"
+
+[tool.setuptools]
+packages = ["rssilab"]
+
+[tool.setuptools.dynamic]
+version = { attr = "rssilab.__version__" }
