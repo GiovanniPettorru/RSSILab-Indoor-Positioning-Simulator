@@ -263,12 +263,18 @@ class RSSILabApp:
         st = ttk.Style(self.root)
         if "clam" in st.theme_names():
             st.theme_use("clam")
-        base = tkfont.nametofont("TkDefaultFont").actual()       # fonts derived from the platform defaults
+        # bold fonts derived from the platform default font; the macOS system fonts (families named
+        # '.AppleSystemUIFont' and the like) cannot be requested by name, so there plain descriptions are used
+        base = tkfont.nametofont("TkDefaultFont").actual()
         size = int(base["size"])                                    # negative: pixels
-        self.font_bold = tkfont.Font(self.root, family=base["family"], size=size, weight="bold")
-        self.font_big = tkfont.Font(self.root, family=base["family"], size=size + (1 if size > 0 else -1),
-                                    weight="bold")
-        self.font_log = tkfont.Font(self.root, family=tkfont.nametofont("TkFixedFont").actual()["family"], size=9)
+        if base["family"].startswith("."):
+            self.font_bold, self.font_big = ("TkDefaultFont", 10, "bold"), ("TkDefaultFont", 11, "bold")
+        else:
+            self.font_bold = tkfont.Font(self.root, family=base["family"], size=size, weight="bold")
+            self.font_big = tkfont.Font(self.root, family=base["family"], size=size + (1 if size > 0 else -1),
+                                        weight="bold")
+        fixed = tkfont.nametofont("TkFixedFont").actual()["family"]
+        self.font_log = ("TkFixedFont", 9) if fixed.startswith(".") else tkfont.Font(self.root, family=fixed, size=9)
         st.configure("Run.TButton", font=self.font_big, padding=(10, 6), foreground="white", background="#1f6f5c")
         st.map("Run.TButton", background=[("active", "#25856e"), ("disabled", "#9db8b0")])
         st.configure("Hint.TLabel", foreground="#555555")
